@@ -1,0 +1,424 @@
+/* --- Globala Inställningar --- */
+:root {
+    --bg-main: #0a0a0a;
+    --bg-secondary: #141414;
+    --accent: #d4af37; /* Guld/Gul från logotypen på bilderna */
+    --text-light: #ffffff;
+    --text-muted: #a0a0a0;
+    --card-bg: #1f1f1f;
+    --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-light);
+}
+
+h1, h2, h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+}
+
+/* --- Preloader --- */
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.6s ease;
+}
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(214, 175, 55, 0.1);
+    border-radius: 50%;
+    border-top-color: var(--accent);
+    animation: spin 1s ease-in-out infinite;
+}
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* --- Text Gradient & Rubriker --- */
+.text-gradient {
+    background: linear-gradient(135deg, #ffffff 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-title {
+    text-align: center;
+    padding: 80px 20px 40px;
+}
+.section-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.section-title p {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+}
+
+/* --- Navbar --- */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+    transition: var(--transition-smooth);
+    padding: 20px 0;
+}
+.navbar.scrolled {
+    background: rgba(10, 10, 10, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(214, 175, 55, 0.2);
+}
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+}
+.logo-text { font-weight: 800; letter-spacing: 1px; }
+.logo-accent { color: var(--accent); font-weight: 800; }
+.nav-menu {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+.nav-link {
+    color: var(--text-light);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: var(--transition-smooth);
+    position: relative;
+}
+.nav-link:hover, .nav-link.active {
+    color: var(--accent);
+}
+
+/* --- Hero Sektion --- */
+.hero-section {
+    height: 100vh;
+    background: url('https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?q=80&w=1920') no-repeat center center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    padding: 0 20px;
+}
+.hero-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.4), var(--bg-main));
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+}
+.hero-content h1 {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+.hero-content p {
+    font-size: 1.3rem;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+/* --- Knappar --- */
+.btn {
+    display: inline-block;
+    padding: 14px 30px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+}
+.btn-primary {
+    background: var(--accent);
+    color: #000;
+}
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba(214, 175, 55, 0.3);
+}
+.btn-secondary {
+    border: 2px solid var(--text-light);
+    color: var(--text-light);
+    margin-left: 15px;
+}
+.btn-secondary:hover {
+    background: var(--text-light);
+    color: #000;
+    transform: translateY(-3px);
+}
+.btn-card {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+    padding: 8px 16px;
+    font-size: 0.9rem;
+}
+.btn-card:hover {
+    background: var(--accent);
+    color: #000;
+}
+
+/* --- Statistik --- */
+.stats-section {
+    background: var(--bg-secondary);
+    padding: 60px 20px;
+}
+.stats-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+.stat-item {
+    text-align: center;
+}
+.stat-item i {
+    font-size: 2.5rem;
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+.stat-item h3 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+/* --- Fordonskort & Grid --- */
+.dark-bg { background-color: var(--bg-secondary); }
+.vehicles-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 30px;
+    padding: 0 20px 80px;
+}
+.vehicle-card {
+    background: var(--card-bg);
+    border-radius: 6px;
+    overflow: hidden;
+    transition: var(--transition-smooth);
+    border: 1px solid rgba(255,255,255,0.05);
+}
+.vehicle-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+    border-color: rgba(214, 175, 55, 0.4);
+}
+.vehicle-img-wrapper {
+    height: 220px;
+    overflow: hidden;
+}
+.vehicle-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+.vehicle-card:hover .vehicle-img-wrapper img {
+    transform: scale(1.08);
+}
+.vehicle-info {
+    padding: 25px;
+}
+.vehicle-info h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+.vehicle-meta {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 20px;
+}
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+/* --- Bildgalleri --- */
+.gallery-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 0 20px 80px;
+}
+.gallery-item {
+    height: 200px;
+    overflow: hidden;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition-smooth);
+}
+.gallery-item:hover img {
+    transform: scale(1.1);
+    filter: brightness(0.8);
+}
+
+/* --- Om Oss --- */
+.about-section { padding: 100px 20px; }
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+.about-content { flex: 1; min-width: 300px; }
+.about-content h2 { font-size: 2.5rem; margin-bottom: 20px; }
+.about-content p { color: var(--text-muted); line-height: 1.7; margin-bottom: 20px; }
+.about-image { flex: 1; min-width: 300px; }
+.about-image img { width: 100%; border-radius: 6px; box-shadow: 0 10px 20px rgba(0,0,0,0.3); }
+
+/* --- Recensioner --- */
+.reviews-section { padding: 40px 20px 100px; }
+.reviews-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+.review-card {
+    background: var(--bg-secondary);
+    padding: 30px;
+    border-radius: 6px;
+    border-left: 3px solid var(--accent);
+}
+.review-card .stars { margin-bottom: 15px; }
+.review-card p { font-style: italic; color: var(--text-muted); margin-bottom: 15px; line-height: 1.5; }
+
+/* --- Kontakt --- */
+.contact-section { padding: 40px 20px 100px; }
+.contact-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    gap: 50px;
+    flex-wrap: wrap;
+}
+.contact-form { flex: 1; min-width: 300px; }
+.form-group { margin-bottom: 20px; }
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 15px;
+    background: var(--bg-main);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: var(--text-light);
+    font-family: inherit;
+    border-radius: 4px;
+    transition: var(--transition-smooth);
+}
+.form-group input:focus, .form-group textarea:focus {
+    border-color: var(--accent);
+    outline: none;
+}
+.contact-info { flex: 1; min-width: 300px; display: flex; flex-direction: column; gap: 20px; }
+.info-item { display: flex; align-items: center; gap: 15px; font-size: 1.1rem; }
+.info-item i { color: var(--accent); font-size: 1.3rem; }
+.map-responsive { margin-top: 20px; border-radius: 6px; overflow: hidden; }
+
+/* --- Lightbox --- */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+}
+.lightbox-content { max-width: 85%; max-height: 85%; border-radius: 4px; }
+.lightbox-close {
+    position: absolute;
+    top: 30px; right: 40px;
+    color: #fff; font-size: 40px; font-weight: bold; cursor: pointer;
+}
+
+/* --- Footer --- */
+.footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #050505;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* --- Scroll Animation Bas-inställning --- */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.scroll-reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- Mobilanpassning & Hamburger --- */
+.hamburger { display: none; cursor: pointer; }
+.bar { display: block; width: 25px; height: 3px; margin: 5px auto; background-color: var(--text-light); transition: 0.3s; }
+
+@media(max-width: 768px) {
+    .hero-content h1 { font-size: 2.5rem; }
+    .hamburger { display: block; }
+    .hamburger.active .bar:nth-child(2) { opacity: 0; }
+    .hamburger.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    .hamburger.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    .nav-menu {
+        position: fixed;
+        left: -100%; top: 70px; gap: 0;
+        flex-direction: column; background-color: var(--bg-main);
+        width: 100%; text-align: center; transition: 0.3s;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+    }
+    .nav-menu.active { left: 0; }
+    .nav-item { margin: 16px 0; }
+}
